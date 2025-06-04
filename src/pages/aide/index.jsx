@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./stylesaide.css";
+import { Link } from "react-router-dom"
 
 const SupportComponent = () => {
   const [theme, setTheme] = useState("light")
@@ -336,11 +337,11 @@ const SupportComponent = () => {
                   </a>
                 </div>
                 <div className="support-mt-6">
-                  <a href="http://localhost:3000/ecodib">
-                    <button className="support-button support-button-primary support-button-full">
+                  <Link to="/ecodib">
+                  <button className="support-button support-button-primary support-button-full">
                       Retour au Tableau de bord
-                    </button>
-                  </a>
+                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
