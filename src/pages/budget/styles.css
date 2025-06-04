@@ -1,0 +1,450 @@
+/* ======================================================
+   styles.css pour src/pages/budget/index.jsx
+   Page Gestion de Budget – Design amélioré et responsive
+   Avec toutes les catégories fournies
+   ====================================================== */
+
+/* ------------------------------------------------------
+   1. Reset rapide / Base typographique
+   ------------------------------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* ------------------------------------------------------
+   2. Container principal
+   ------------------------------------------------------ */
+.budget-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ------------------------------------------------------
+   3. Bouton Retour
+   ------------------------------------------------------ */
+.back-container {
+  margin-bottom: 1.5rem;
+}
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #2c3e50;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.back-button:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-1px);
+}
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------
+   4. Titre principal
+   ------------------------------------------------------ */
+.budget-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------
+   5. Disposition générale – Deux colonnes sur desktop
+   ------------------------------------------------------ */
+.budget-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* ------------------------------------------------------
+   6. Colonne « Budgets par catégorie »
+   ------------------------------------------------------ */
+.budgets-col {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.budgets-col h3 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* Carte de chaque catégorie */
+.budget-card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+.budget-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Bandeau coloré en haut de la carte */
+.budget-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.4rem;
+  background-color: var(--cat-color);
+}
+
+/* Icône et titre */
+.budget-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+.budget-card-header .cat-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  fill: var(--cat-color);
+}
+.budget-card-header h4 {
+  font-size: 1.25rem;
+  color: #1f2937;
+}
+
+/* Contenu de la carte */
+.budget-card-content {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Formulaire budget */
+.budget-card-content form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.budget-card-content label {
+  flex: 1 1 120px;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+.budget-card-content input[type="number"] {
+  flex: 1 1 80px;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.4rem;
+}
+.budget-card-content button[type="submit"],
+.budget-card-content .reset-button {
+  background-color: var(--cat-color);
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.budget-card-content button[type="submit"]:hover,
+.budget-card-content .reset-button:hover {
+  background-color: #374151;
+  transform: translateY(-1px);
+}
+.budget-card-content button[type="submit"]:active,
+.budget-card-content .reset-button:active {
+  transform: translateY(0);
+}
+
+/* Info sur le budget/dépense/restant */
+.budget-info {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+.budget-message {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* ------------------------------------------------------
+  7. Colonne « Ajouter transaction / Résumé rapide »
+   ------------------------------------------------------ */
+.tx-col {
+  display: grid;
+  /* On applique un espacement vertical plus fin : */
+  row-gap: 1rem;
+}
+
+/* Conteneur de chaque sous-section (titre + contenu) */
+.tx-section {
+  display: grid;
+  row-gap: 0.5rem;
+}
+
+/* Section formulaire */
+.tx-section h3 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 0;
+}
+
+.tx-form {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tx-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+.tx-form select,
+.tx-form input[type="text"],
+.tx-form input[type="number"] {
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.4rem;
+  margin-top: 0.25rem;
+}
+.tx-form button {
+  justify-self: start;
+  background-color: #10b981;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.tx-form button:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+.tx-form button:active {
+  transform: translateY(0);
+}
+
+/* Section “Résumé rapide” */
+.tx-section .quick-section h3 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+.quick-section {
+  display: grid;
+  gap: 0.75rem;
+}
+.quick-card {
+  background-color: #f9fafb;
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.quick-card:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.quick-card strong {
+  font-size: 1rem;
+  color: #111827;
+}
+.quick-card p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* ------------------------------------------------------
+   8. Couleurs & icônes par catégorie (variables CSS)
+   ------------------------------------------------------
+   Voici la liste des catégories et les teintes retenues :
+     • Alimentation       – orange (#f97316)
+     • Immobilier         – bleu foncé (#1e40af)
+     • Shopping           – rose vif (#db2777)
+     • Transports         – violet (#9333ea)
+     • Fêtes              – jaune-orangé (#f59e0b)
+     • Mariages           – rose pastel (#ec4899)
+     • Voyages            – teal (#0d9488)
+     • Cadeaux            – indigo (#6366f1)
+     • Vacances           – vert clair (#22c55e)
+     • Jeux et loisirs    – rouge (#dc2626)
+     • Autres             – gris foncé (#6b7280)
+*/
+
+/* Alimentation */
+.budget-card[data-category="Alimentation"] {
+  --cat-color: #f97316;
+}
+.budget-card[data-category="Alimentation"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Immobilier */
+.budget-card[data-category="Immobilier"] {
+  --cat-color: #1e40af;
+}
+.budget-card[data-category="Immobilier"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Shopping */
+.budget-card[data-category="Shopping"] {
+  --cat-color: #db2777;
+}
+.budget-card[data-category="Shopping"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Transports */
+.budget-card[data-category="Transports"] {
+  --cat-color: #9333ea;
+}
+.budget-card[data-category="Transports"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Fêtes */
+.budget-card[data-category="Fêtes"] {
+  --cat-color: #f59e0b;
+}
+.budget-card[data-category="Fêtes"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Mariages */
+.budget-card[data-category="Mariages"] {
+  --cat-color: #ec4899;
+}
+.budget-card[data-category="Mariages"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Voyages */
+.budget-card[data-category="Voyages"] {
+  --cat-color: #0d9488;
+}
+.budget-card[data-category="Voyages"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Cadeaux */
+.budget-card[data-category="Cadeaux"] {
+  --cat-color: #6366f1;
+}
+.budget-card[data-category="Cadeaux"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Vacances */
+.budget-card[data-category="Vacances"] {
+  --cat-color: #22c55e;
+}
+.budget-card[data-category="Vacances"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Jeux et loisirs */
+.budget-card[data-category="Jeux et loisirs"] {
+  --cat-color: #dc2626;
+}
+.budget-card[data-category="Jeux et loisirs"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* Autres */
+.budget-card[data-category="Autres"] {
+  --cat-color: #6b7280;
+}
+.budget-card[data-category="Autres"] .cat-icon {
+  fill: var(--cat-color);
+}
+
+/* ------------------------------------------------------
+   9. Grid sur tablette/mobile – Adaptabilité
+   ------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .budget-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------
+   10. Ajustements pour petits écrans (<640px)
+   ------------------------------------------------------ */
+@media (max-width: 640px) {
+  .budget-page {
+    padding: 0 0.5rem;
+  }
+  .budget-title {
+    font-size: 1.75rem;
+  }
+  .back-button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Cartes plus compactes */
+  .budget-card {
+    border-radius: 0.6rem;
+  }
+  .budget-card-header h4 {
+    font-size: 1.1rem;
+  }
+  .budget-card-content {
+    padding: 0.75rem;
+  }
+
+  /* Formulaire transaction plus compact */
+  .tx-form {
+    padding: 0.75rem;
+  }
+  .tx-form label {
+    font-size: 0.9rem;
+  }
+  .tx-form button {
+    font-size: 0.9rem;
+  }
+
+  /* Résumé rapide plus compact */
+  .quick-card {
+    padding: 0.6rem 0.8rem;
+  }
+  .quick-card strong {
+    font-size: 0.95rem;
+  }
+}

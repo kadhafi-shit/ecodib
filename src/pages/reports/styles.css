@@ -1,0 +1,312 @@
+/* ====================================================
+  Styles pour la page Reports (Budget & Dépenses)
+   ==================================================== */
+
+/* Container principal */
+
+.reports-page {
+  max-width: 1024px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* ------------------------
+  Bouton Retour
+   ------------------------ */
+  
+.back-container {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  color: #2c3e50;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.back-button:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* ------------------------
+  Titre principal
+   ------------------------ */
+  
+.reports-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ------------------------
+  Résumé global (cards)
+   ------------------------ */
+  
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Styles communs à chaque carte */
+
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icônes (SVG) dans les cards */
+
+.card-icon-svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
+  stroke-width: 1.5;
+}
+
+/* Le solde */
+
+.balance-card {
+  border: 2px solid #27ae60; /* vert */
+}
+.balance-card .value {
+  background: linear-gradient(135deg, #27ae60 0%, #5ac17d 100%);
+  color: #fff;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Total revenus */
+
+.income-card {
+  border: 2px solid #27ae60; /* vert */
+}
+.income-card .value {
+  color: #27ae60;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Total dépenses */
+
+.expense-card {
+  border: 2px solid #c0392b; /* rouge */
+}
+.expense-card .value {
+  color: #c0392b;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Total ce mois */
+
+.month-card {
+  border: 2px solid #2980b9; /* bleu */
+}
+.month-card .value {
+  color: #2980b9;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Total depuis le début */
+
+.all-card {
+  border: 2px solid #2980b9; /* bleu */
+}
+.all-card .value {
+  color: #2980b9;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Titre interne à la carte */
+
+.card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ------------------------
+  Section bas (table + stats)
+   ------------------------ */
+  
+.bottom-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* --------- Colonne gauche : Tableau --------- */
+
+.table-container {
+  flex: 1 1 65%;
+  min-width: 280px;
+}
+
+/* Titre de chaque section */
+.section-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+/* Conteneur scrollable pour la table */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Tableau */
+
+.monthly-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.monthly-table th,
+.monthly-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.monthly-table th {
+  background-color: #f7f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.monthly-table tbody tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+.monthly-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.net-positive {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.net-negative {
+  color: #c0392b;
+  font-weight: 500;
+}
+
+/* Statistiques */
+
+.stats-container {
+  flex: 1 1 30%;
+  min-width: 220px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Adaptation  */
+
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Adaptation 2 */
+
+@media (min-width: 1200px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.stat-card .value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* ------------------------
+  Responsive global
+   ------------------------ */
+
+@media (max-width: 768px) {
+  .reports-title {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .monthly-table th,
+  .monthly-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Réduire le padding des cartes sur mobile */
+
+  .card {
+    padding: 0.75rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
